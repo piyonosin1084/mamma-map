@@ -77,3 +77,6 @@
 5. 地図表示機能
    Google Maps API（JavaScriptライブラリ）を使用して店舗位置を地図上に表示したい。
 
+
+## 画面遷移図
+Figma: [画面遷移図リンク](https://www.figma.com/design/BQKAu3ctg5KNssGfc54kTR/%E5%8D%92%E5%88%B6?node-id=3311-2&p=f&t=BTMZn1Yn6wJs7Ixf-0)
