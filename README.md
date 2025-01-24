@@ -79,4 +79,4 @@
 
 
 ## 画面遷移図
-Figma: [画面遷移図リンク](https://www.figma.com/design/BQKAu3ctg5KNssGfc54kTR/%E5%8D%92%E5%88%B6?node-id=3311-2&p=f&t=BTMZn1Yn6wJs7Ixf-0)
+Figma: [画面遷移図リンク](https://www.figma.com/design/BQKAu3ctg5KNssGfc54kTR/%E5%8D%92%E5%88%B6?node-id=3311-2&p=f&t=uuTD3tlL4LeN2OVu-0)
