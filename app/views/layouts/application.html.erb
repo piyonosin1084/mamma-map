@@ -18,6 +18,25 @@
   </head>
 
   <body>
+    <header>
+      <nav style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: #f8f9fa;">
+        <div>
+          <%= link_to "Home", root_path, style: "text-decoration: none; font-size: 20px; font-weight: bold;" %>
+        </div>
+        <div>
+          <% if user_signed_in? %>
+            <span style="margin-right: 10px;">こんにちは, <%= current_user.email %> さん</span>
+
+            <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-danger", form: { style: "display:inline;" } %>
+          <% else %>
+            <%= link_to "ログイン", new_session_path(:user), class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </nav>
+    </header>
+
     <%= yield %>
+
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </body>
 </html>

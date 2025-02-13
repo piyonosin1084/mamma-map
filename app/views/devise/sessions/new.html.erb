@@ -1,0 +1,21 @@
+<h2>ログインはこちらから</h2>
+
+<%= form_with url: user_session_path, local: true, method: :post do |f| %>
+  <div>
+    <%= f.label :email, "メールアドレス" %><br>
+    <%= f.email_field :email, required: true, autofocus: true %>
+  </div>
+
+  <div>
+    <%= f.label :password, "パスワード" %><br>
+    <%= f.password_field :password, required: true %>
+  </div>
+
+  <div>
+    <%= f.submit "ログイン", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<hr>
+
+<p><%= link_to "新規登録の方はこちら", new_user_registration_path, class: "btn btn-success" %></p>
