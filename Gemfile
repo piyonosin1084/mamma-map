@@ -58,5 +58,5 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem 'devise'
-#ログイン機能のgem
+gem "devise"
+# ログイン機能のgem
