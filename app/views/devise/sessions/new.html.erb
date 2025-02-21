@@ -1,6 +1,12 @@
-<h2>ログインはこちらから</h2>
+<h2>ログインページ</h2>
 
 <%= form_with url: user_session_path, local: true, method: :post do |f| %>
+  <!--ユーザー名追加-->
+  <div class="field">
+    <%= f.label :ユーザー名 %><br>
+    <%= f.text_field :name %>
+  </div>
+
   <div>
     <%= f.label :email, "メールアドレス" %><br>
     <%= f.email_field :email, required: true, autofocus: true %>
