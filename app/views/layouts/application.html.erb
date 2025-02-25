@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title><%= content_for(:title) || "Myapp" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= yield :head %>
 
+    <!-- PWA & Favicon -->
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+
+    <!-- CSS 読み込み -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
   <body>
@@ -25,18 +27,23 @@
         </div>
         <div>
           <% if user_signed_in? %>
-            <span style="margin-right: 10px;">こんにちは, <%= current_user.email %> さん</span>
+            <span style="margin-right: 10px;">こんにちは, <%= current_user.name || current_user.email %> さん</span>
 
-            <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-danger", form: { style: "display:inline;" } %>
+            <%= form_with url: destroy_user_session_path, method: :delete, local: true, style: "display: inline;" do %>
+              <%= submit_tag "ログアウト", class: "btn btn-danger" %>
+            <% end %>
           <% else %>
-            <%= link_to "ログイン", new_session_path(:user), class: "btn btn-primary" %>
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %>
           <% end %>
         </div>
       </nav>
     </header>
 
-    <%= yield %>
+    <main class="container">
+      <%= yield %>
+    </main>
 
+    <!-- JavaScript 読み込み -->
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </body>
 </html>

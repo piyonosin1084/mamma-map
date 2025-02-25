@@ -1,24 +1,17 @@
 <h2>ログインページ</h2>
 
-<%= form_with url: user_session_path, local: true, method: :post do |f| %>
-  <!--ユーザー名追加-->
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :ユーザー名 %><br>
-    <%= f.text_field :name %>
+    <%= f.label :login, "ユーザー名またはメールアドレス" %><br>
+    <%= f.text_field :login, required: true, autofocus: true %>
   </div>
 
-
-  <div>
-    <%= f.label :email, "メールアドレス" %><br>
-    <%= f.email_field :email, required: true, autofocus: true %>
-  </div>
-
-  <div>
+  <div class="field">
     <%= f.label :password, "パスワード" %><br>
     <%= f.password_field :password, required: true %>
   </div>
 
-  <div>
+  <div class="actions">
     <%= f.submit "ログイン", class: "btn btn-primary" %>
   </div>
 <% end %>
