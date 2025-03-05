@@ -30,7 +30,7 @@
             <span style="margin-right: 10px;">こんにちは, <%= current_user.name || current_user.email %> さん</span>
 
             <%= form_with url: destroy_user_session_path, method: :delete, local: true, style: "display: inline;" do %>
-              <%= submit_tag "ログアウト", class: "btn btn-danger" %>
+              <%= submit_tag "ログアウト", class: "btn logout" %>
             <% end %>
           <% else %>
             <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %>
