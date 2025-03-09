@@ -30,7 +30,7 @@
             <span style="margin-right: 10px;">こんにちは, <%= current_user.name || current_user.email %> さん</span>
 
             <%= form_with url: destroy_user_session_path, method: :delete, local: true, style: "display: inline;" do %>
-              <%= submit_tag "ログアウト", class: "btn btn-danger" %>
+              <%= submit_tag "ログアウト", class: "btn logout" %>
             <% end %>
           <% else %>
             <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %>
@@ -38,6 +38,21 @@
         </div>
       </nav>
     </header>
+
+    <%# アラートメッセージの表示 %>
+    <% if flash[:success] %>
+      <div class="bg-green-500"><%= flash[:success] %></div>
+    <% end %>
+    <% if flash[:error] %>
+      <div class="bg-yellow-500"><%= flash[:error] %></div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="bg-red-500"><%= flash[:alert] %></div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="bg-green-500"><%= flash[:notice] %></div>
+    <% end %>
+
 
     <main class="container">
       <%= yield %>
