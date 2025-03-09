@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      store:
+        categories:
+          Family_restaurant: "ファミレス"
+          Western_food: "洋食"
+          Japanese_food: "和食"
+          Chinese_food: "中華"
+          cafe: "カフェ"
