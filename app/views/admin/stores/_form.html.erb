@@ -32,6 +32,120 @@
     <%= f.text_field :hours, class: "form-input w-full border border-gray-300 rounded-md p-2" %>
   </div>
 
+  <!--子連れ向け情報-->
+  <div class="mb-4">
+  <label class="block font-bold">個室</label>
+  <div class="flex space-x-4">
+    <%= f.radio_button :private_room, "available", id: "private_room_available", class: "form-radio" %>
+    <%= f.label :private_room_available, "あり", for: "private_room_available", class: "ml-1" %>
+
+    <%= f.radio_button :private_room, "not_available", id: "private_room_not_available", class: "form-radio" %>
+    <%= f.label :private_room_not_available, "なし", for: "private_room_not_available", class: "ml-1" %>
+
+    <%= f.radio_button :private_room, "unknown", id: "private_room_unknown", class: "form-radio" %>
+    <%= f.label :private_room_unknown, "不明", for: "private_room_unknown", class: "ml-1" %>
+  </div>
+</div>
+
+  <div class="mb-4">
+  <label class="block font-bold">座敷</label>
+  <div class="flex space-x-4">
+    <%= f.radio_button :tatami, "available", id: "tatami_available", class: "form-radio" %>
+    <%= f.label :tatami_available, "あり", for: "tatami_available", class: "ml-1" %>
+
+    <%= f.radio_button :tatami, "not_available", id: "tatami_not_available", class: "form-radio" %>
+    <%= f.label :tatami_not_available, "なし", for: "tatami_not_available", class: "ml-1" %>
+
+    <%= f.radio_button :tatami, "unknown", id: "tatami_unknown", class: "form-radio" %>
+    <%= f.label :tatami_unknown, "不明", for: "tatami_unknown", class: "ml-1" %>
+  </div>
+</div>
+
+  <div class="mb-4">
+  <label class="block font-bold">子供用椅子</label>
+  <div class="flex space-x-4">
+    <%= f.radio_button :kids_chair, "available", id: "kids_chair_available", class: "form-radio" %>
+    <%= f.label :kids_chair_available, "あり", for: "kids_chair_available", class: "ml-1" %>
+
+    <%= f.radio_button :kids_chair, "not_available", id: "kids_chair_not_available", class: "form-radio" %>
+    <%= f.label :kids_chair_not_available, "なし", for: "kids_chair_not_available", class: "ml-1" %>
+
+    <%= f.radio_button :kids_chair, "unknown", id: "kids_chair_unknown", class: "form-radio" %>
+    <%= f.label :kids_chair_unknown, "不明", for: "kids_chair_unknown", class: "ml-1" %>
+  </div>
+</div>
+
+    <div class="mb-4">
+    <label class="block font-bold">ベビーカー入店可</label>
+    <div class="flex space-x-4">
+        <%= f.radio_button :stroller, "available", id: "stroller_available", class: "form-radio" %>
+        <%= f.label :stroller_available, "可能", for: "stroller_available", class: "ml-1" %>
+
+        <%= f.radio_button :stroller, "not_available", id: "stroller_not_available", class: "form-radio" %>
+        <%= f.label :stroller_not_available, "不可", for: "stroller_not_available", class: "ml-1" %>
+
+        <%= f.radio_button :stroller, "unknown", id: "stroller_unknown", class: "form-radio" %>
+        <%= f.label :stroller_unknown, "不明", for: "stroller_unknown", class: "ml-1" %>
+    </div>
+    </div>
+
+    <div class="mb-4">
+    <label class="block font-bold">アレルギー対応メニュー</label>
+    <div class="flex space-x-4">
+        <%= f.radio_button :allergy_menu, "available", id: "allergy_menu_available", class: "form-radio" %>
+        <%= f.label :allergy_menu_available, "あり", for: "allergy_menu_available", class: "ml-1" %>
+
+        <%= f.radio_button :allergy_menu, "not_available", id: "allergy_menu_not_available", class: "form-radio" %>
+        <%= f.label :allergy_menu_not_available, "なし", for: "allergy_menu_not_available", class: "ml-1" %>
+
+        <%= f.radio_button :allergy_menu, "unknown", id: "allergy_menu_unknown", class: "form-radio" %>
+        <%= f.label :allergy_menu_unknown, "不明", for: "allergy_menu_unknown", class: "ml-1" %>
+    </div>
+    </div>
+
+    <div class="mb-4">
+    <label class="block font-bold">キッズスペース</label>
+    <div class="flex space-x-4">
+        <%= f.radio_button :kids_space, "available", id: "kids_space_available", class: "form-radio" %>
+        <%= f.label :kids_space_available, "あり", for: "kids_space_available", class: "ml-1" %>
+
+        <%= f.radio_button :kids_space, "not_available", id: "kids_space_not_available", class: "form-radio" %>
+        <%= f.label :kids_space_not_available, "なし", for: "kids_space_not_available", class: "ml-1" %>
+
+        <%= f.radio_button :kids_space, "unknown", id: "kids_space_unknown", class: "form-radio" %>
+        <%= f.label :kids_space_unknown, "不明", for: "kids_space_unknown", class: "ml-1" %>
+    </div>
+    </div>
+
+    <div class="mb-4">
+    <label class="block font-bold">おむつ交換台</label>
+    <div class="flex space-x-4">
+        <%= f.radio_button :diaper_changing, "available", id: "diaper_changing_available", class: "form-radio" %>
+        <%= f.label :diaper_changing_available, "あり", for: "diaper_changing_available", class: "ml-1" %>
+
+        <%= f.radio_button :diaper_changing, "not_available", id: "diaper_changing_not_available", class: "form-radio" %>
+        <%= f.label :diaper_changing_not_available, "なし", for: "diaper_changing_not_available", class: "ml-1" %>
+
+        <%= f.radio_button :diaper_changing, "unknown", id: "diaper_changing_unknown", class: "form-radio" %>
+        <%= f.label :diaper_changing_unknown, "不明", for: "diaper_changing_unknown", class: "ml-1" %>
+    </div>
+    </div>
+
+    <div class="mb-4">
+    <label class="block font-bold">授乳室</label>
+    <div class="flex space-x-4">
+        <%= f.radio_button :nursing_room, "available", id: "nursing_room_available", class: "form-radio" %>
+        <%= f.label :nursing_room_available, "あり", for: "nursing_room_available", class: "ml-1" %>
+
+        <%= f.radio_button :nursing_room, "not_available", id: "nursing_room_not_available", class: "form-radio" %>
+        <%= f.label :nursing_room_not_available, "なし", for: "nursing_room_not_available", class: "ml-1" %>
+
+        <%= f.radio_button :nursing_room, "unknown", id: "nursing_room_unknown", class: "form-radio" %>
+        <%= f.label :nursing_room_unknown, "不明", for: "nursing_room_unknown", class: "ml-1" %>
+    </div>
+    </div>
+
+
   <div class="mt-6">
     <%= f.submit "登録する", class: "btn btn-primary bg-blue-500 text-white px-4 py-2 rounded-md" %>
     <%= link_to "戻る", admin_stores_path, class: "btn btn-secondary ml-2 text-gray-700 underline" %>
