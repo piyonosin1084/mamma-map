@@ -3,8 +3,12 @@ ja:
     attributes:
       store:
         categories:
-          Family_restaurant: "ファミレス"
+          Family_restaurant: "ファミリーレストラン"
           Western_food: "洋食"
           Japanese_food: "和食"
           Chinese_food: "中華"
           cafe: "カフェ"
+        areas:
+          tokyo: "東京"
+          osaka: "大阪"
+          nagoya: "名古屋"

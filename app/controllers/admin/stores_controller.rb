@@ -57,7 +57,7 @@ class Admin::StoresController < ApplicationController
 
     # ストリングパラメーター
     def store_params
-      params.require(:store).permit(:store_name, :category, :address, :phone_number, :hours)
+      params.require(:store).permit(:store_name, :category, :area, :address, :phone_number, :hours)
     end
 
     # 管理者のみアクセス許可
