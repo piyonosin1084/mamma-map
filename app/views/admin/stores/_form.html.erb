@@ -147,7 +147,7 @@
 
 
   <div class="mt-6">
-    <%= f.submit "登録する", class: "btn btn-primary bg-blue-500 text-white px-4 py-2 rounded-md" %>
+    <%= f.submit @store.new_record? ? "登録する" : "更新", class: "btn btn-primary bg-blue-500 text-white px-4 py-2 rounded-md" %>
     <%= link_to "戻る", admin_stores_path, class: "btn btn-secondary ml-2 text-gray-700 underline" %>
   </div>
 <% end %>

@@ -7,10 +7,15 @@
 <div class="space-y-4">
   <% if @stores.present? %>
     <% @stores.each do |store| %>
-      <div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center">
-        <div class="space-y-1">
-          <p><span class="font-bold">id:</span> <%= store.id %></p>
-          <p><span class="font-bold">店舗名:</span> <%= store.store_name %></p>
+      <div class="bg-white p-4 rounded-lg shadow-md">
+        <p>
+          <!--店舗名をクリックしたら詳細が出てくるイベント設定-->
+          <a href="#" class="toggle-details font-bold text-blue-500" data-store-id="<%= store.id %>">
+            <%= store.store_name %>
+          </a>
+        </p>
+        
+        <div id="details-<%= store.id %>" style="display: none;" class="mt-2 p-2 border border-gray-300 rounded-lg bg-gray-100">
           <p><span class="font-bold">カテゴリ:</span> <%= store.category_i18n %></p>
           <p><span class="font-bold">エリア:</span> <%= store.area_i18n %></p>
           <p><span class="font-bold">住所:</span> <%= store.address %></p>
@@ -25,10 +30,11 @@
           <p><span class="font-bold">おむつ交換台:</span> <%= store.diaper_changing_i18n %></p>
           <p><span class="font-bold">授乳室:</span> <%= store.nursing_room_i18n %></p>
 
-        </div>
-        <div class="space-x-2">
-          <%= link_to '編集', edit_admin_store_path(store), class: "bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600" %>
-          <%= link_to '削除', admin_store_path(store), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600" %>
+          <!-- 編集・削除ボタン -->
+          <div class="mt-3 space-x-2">
+            <%= link_to '編集', edit_admin_store_path(store), class: "bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600" %>
+            <%= link_to '削除', admin_store_path(store), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600" %>
+          </div>
         </div>
       </div>
     <% end %>
