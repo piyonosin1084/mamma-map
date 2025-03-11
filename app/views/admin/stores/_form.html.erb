@@ -4,10 +4,17 @@
     <%= f.text_field :store_name, class: "form-input w-full border border-gray-300 rounded-md p-2" %>
   </div>
 
+  <!--タグで選択-->
   <div class="mb-4">
   <%= f.label :category, "カテゴリー", class: "block font-bold" %>
   <%= f.select :category, Store.categories.keys.map { |c| [Store.new(category: c).category_i18n, c] }, {}, class: "form-select w-full border border-gray-300 rounded-md p-2" %>
-</div>
+  </div>
+
+  <!--タグで選択-->
+  <div class="mb-4">
+  <%= f.label :area, "エリア", class: "block font-bold" %>
+  <%= f.select :area, [["東京", "tokyo"], ["大阪", "osaka"], ["名古屋", "nagoya"]], {}, class: "form-select w-full border border-gray-300 rounded-md p-2" %>
+  </div>
 
 
   <div class="mb-4">
@@ -30,4 +37,3 @@
     <%= link_to "戻る", admin_stores_path, class: "btn btn-secondary ml-2 text-gray-700 underline" %>
   </div>
 <% end %>
-
