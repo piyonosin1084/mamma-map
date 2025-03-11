@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_11_061916) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_11_151429) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_11_061916) do
     t.string "image_url"
     t.string "genre"
     t.integer "area"
+    t.integer "private_room"
+    t.integer "tatami"
+    t.integer "kids_chair"
+    t.integer "stroller"
+    t.integer "allergy_menu"
+    t.integer "kids_space"
+    t.integer "diaper_changing"
+    t.integer "nursing_room"
   end
 
   create_table "users", force: :cascade do |t|

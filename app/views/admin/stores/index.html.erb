@@ -16,6 +16,15 @@
           <p><span class="font-bold">住所:</span> <%= store.address %></p>
           <p><span class="font-bold">電話番号:</span> <%= store.phone_number %></p>
           <p><span class="font-bold">営業時間:</span> <%= store.hours %></p>
+          <p><span class="font-bold">個室:</span> <%= store.private_room_i18n %></p>
+          <p><span class="font-bold">座敷:</span> <%= store.tatami_i18n %></p>
+          <p><span class="font-bold">子供用椅子:</span> <%= store.kids_chair_i18n %></p>
+          <p><span class="font-bold">ベビーカー入店:</span> <%= store.stroller_i18n %></p>
+          <p><span class="font-bold">アレルギー対応メニュー:</span> <%= store.allergy_menu_i18n %></p>
+          <p><span class="font-bold">キッズスペース:</span> <%= store.kids_space_i18n %></p>
+          <p><span class="font-bold">おむつ交換台:</span> <%= store.diaper_changing_i18n %></p>
+          <p><span class="font-bold">授乳室:</span> <%= store.nursing_room_i18n %></p>
+
         </div>
         <div class="space-x-2">
           <%= link_to '編集', edit_admin_store_path(store), class: "bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600" %>

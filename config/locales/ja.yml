@@ -12,3 +12,36 @@ ja:
           tokyo: "東京"
           osaka: "大阪"
           nagoya: "名古屋"
+        kids_friendly:
+          private_room:
+            available: "あり"
+            not_available: "なし"
+            unknown: "不明"
+          tatami:
+            available: "あり"
+            not_available: "なし"
+            unknown: "不明"
+          kids_chair:
+            available: "あり"
+            not_available: "なし"
+            unknown: "不明"
+          stroller:
+            available: "可能"
+            not_available: "不可"
+            unknown: "不明"
+          allergy_menu:
+            available: "あり"
+            not_available: "なし"
+            unknown: "不明"
+          kids_space:
+            available: "あり"
+            not_available: "なし"
+            unknown: "不明"
+          diaper_changing:
+            available: "あり（施設内）"
+            not_available: "なし"
+            unknown: "不明"
+          nursing_room:
+            available: "あり（施設内）"
+            not_available: "なし"
+            unknown: "不明"
