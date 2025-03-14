@@ -7,34 +7,21 @@
   <!-- 検索フォーム -->
   <div class="search-box">
     <h2>かんたん検索</h2>
-    <form action="<%= stores_path %>" method="get">
+    <%= form_with url: search_stores_path, method: :get, local: true, data: { turbo: false } do |f| %>
       <div class="search-options">
-        <label>
-          <input type="radio" name="location" value="current"> 現在地
-        </label>
-        <label>
-          <input type="radio" name="location" value="area"> エリア
-        </label>
-        <select name="area">
-          <option value="">エリアを選択</option>
-          <option value="東京">東京</option>
-          <option value="大阪">大阪</option>
-          <option value="名古屋">名古屋</option>
-        </select>
+        <div>
+          <%= f.label :area, "エリア" %>
+          <%= f.select :area, Store.areas.keys.map { |a| [I18n.t("activerecord.attributes.store.areas.#{a}", default: a), a] }, { include_blank: "すべて" }, class: "form-select" %>
+        </div>
+
+        <div>
+          <%= f.label :category, "ジャンル" %>
+          <%= f.select :category, Store.categories.keys.map { |c| [Store.new(category: c).category_i18n, c] }, { include_blank: "すべて" }, class: "form-select" %>
+        </div>
       </div>
 
-      <div class="genre-options">
-        <label>ジャンル</label>
-        <select name="genre">
-          <option value="">ジャンルを選択</option>
-          <option value="和食">和食</option>
-          <option value="洋食">洋食</option>
-          <option value="カフェ">カフェ</option>
-        </select>
-      </div>
-
-      <button type="submit" class="btn search">検索</button>
-    </form>
+      <%= f.submit "検索", class: "btn btn-primary" %>
+    <% end %>
   </div>
 
   <!-- 店舗リスト -->
@@ -44,9 +31,10 @@
       <% @stores.each do |store| %>
         <div class="store">
           <img src="<%= store.image_url || 'https://via.placeholder.com/150' %>" alt="店舗画像">
-          <p><%= store.name %></p>
-          <p><%= store.genre %></p>
+          <p><%= store.store_name %></p>
+          <p><%= store.category_i18n %></p>
         </div>
       <% end %>
     </div>
   </div>
+</div>
