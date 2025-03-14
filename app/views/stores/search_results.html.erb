@@ -1,0 +1,13 @@
+<h1>検索結果</h1>
+
+<% if @stores.any? %>
+  <% @stores.each do |store| %>
+    <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+      <p><strong>店舗名:</strong> <%= store.store_name %></p>
+      <p><strong>エリア:</strong> <%= store.area_i18n %></p>
+      <p><strong>カテゴリ:</strong> <%= store.category_i18n %></p>
+    </div>
+  <% end %>
+<% else %>
+  <p>該当する店舗は見つかりませんでした。</p>
+<% end %>

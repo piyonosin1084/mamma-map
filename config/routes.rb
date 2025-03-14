@@ -7,8 +7,12 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
 
-  # 店舗の検索
-  resources :stores, only: [ :index, :show ]
+  # 店舗の検索&一覧表示
+  resources :stores, only: [ :index, :show ] do
+    collection do
+      get :search
+    end
+  end
 
   # 管理者用（店舗管理）
   namespace :admin do

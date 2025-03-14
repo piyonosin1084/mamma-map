@@ -2,6 +2,10 @@ ja:
   activerecord:
     attributes:
       store:
+        areas:
+          tokyo: "東京"
+          osaka: "大阪"
+          nagoya: "名古屋"
         categories:
           Family_restaurant: "ファミレス"
           Western_food: "洋食"

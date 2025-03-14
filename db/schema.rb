@@ -25,6 +25,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_08_192205) do
     t.string "hours"
     t.string "image_url"
     t.string "genre"
+    t.integer "area"
+    t.integer "private_room"
+    t.integer "tatami"
+    t.integer "kids_chair"
+    t.integer "stroller"
+    t.integer "allergy_menu"
+    t.integer "kids_space"
+    t.integer "diaper_changing"
+    t.integer "nursing_room"
   end
 
   create_table "users", force: :cascade do |t|
