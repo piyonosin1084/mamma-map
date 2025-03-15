@@ -8,14 +8,10 @@
   <% if @stores.present? %>
     <% @stores.each do |store| %>
       <div class="bg-white p-4 rounded-lg shadow-md">
-        <p>
-          <!--店舗名をクリックしたら詳細が出てくるイベント設定-->
-          <a href="#" class="toggle-details font-bold text-blue-500" data-store-id="<%= store.id %>">
-            <%= store.store_name %>
-          </a>
-        </p>
-        
-        <div id="details-<%= store.id %>" style="display: none;" class="mt-2 p-2 border border-gray-300 rounded-lg bg-gray-100">
+        <p class="font-bold text-lg text-blue-500"><%= store.store_name %></p>
+
+        <!-- 詳細情報を常に表示 -->
+        <div class="mt-2 p-2 border border-gray-300 rounded-lg bg-gray-100">
           <p><span class="font-bold">カテゴリ:</span> <%= store.category_i18n %></p>
           <p><span class="font-bold">エリア:</span> <%= store.area_i18n %></p>
           <p><span class="font-bold">住所:</span> <%= store.address %></p>
