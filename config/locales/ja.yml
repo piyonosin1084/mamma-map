@@ -14,34 +14,42 @@ ja:
           cafe: "カフェ"
         kids_friendly:
           private_room:
+            name: "個室"
             available: "あり"
             not_available: "なし"
             unknown: "不明"
           tatami:
+            name: "座敷"
             available: "あり"
             not_available: "なし"
             unknown: "不明"
           kids_chair:
+            name: "キッズチェア"
             available: "あり"
             not_available: "なし"
             unknown: "不明"
           stroller:
+            name: "ベビーカー入店"
             available: "可能"
             not_available: "不可"
             unknown: "不明"
           allergy_menu:
+            name: "アレルギーメニュー"
             available: "あり"
             not_available: "なし"
             unknown: "不明"
           kids_space:
+            name: "キッズスペース"
             available: "あり"
             not_available: "なし"
             unknown: "不明"
           diaper_changing:
+            name: "おむつ交換台"
             available: "あり（施設内）"
             not_available: "なし"
             unknown: "不明"
           nursing_room:
+            name: "授乳室"
             available: "あり（施設内）"
             not_available: "なし"
             unknown: "不明"

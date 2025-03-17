@@ -15,6 +15,11 @@ class Store < ApplicationRecord
   enum :diaper_changing, { unknown: 0, available: 1, not_available: 2 }, prefix: true, default: :unknown
   enum :nursing_room, { unknown: 0, available: 1, not_available: 2 }, prefix: true, default: :unknown
 
+  # ✅ 子連れ対応設備のリストを定義
+  def self.kids_friendly_attributes
+    %w[private_room tatami kids_chair stroller allergy_menu kids_space diaper_changing nursing_room]
+  end
+
   # 必須情報（店名とエリア）
   validates :store_name, :area, presence: true
 
@@ -28,7 +33,7 @@ class Store < ApplicationRecord
     I18n.t("activerecord.attributes.store.areas.#{area}", locale: :ja, default: "未設定")
   end
 
-  # 子連れ向け情報の i18n
+  # ✅ 子連れ対応設備の個別 i18n メソッドを追加
   def private_room_i18n
     I18n.t("activerecord.attributes.store.kids_friendly.private_room.#{private_room}", locale: :ja)
   end

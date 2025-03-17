@@ -61,19 +61,16 @@ class StoresController < ApplicationController
 
   # ✅ 子連れ情報のチェックボックスで絞り込み
   if params[:kids_friendly].present?
-    kids_friendly_conditions = []
+    kids_friendly_conditions = {}
 
     params[:kids_friendly].each do |key, value|
       if Store.kids_friendly_attributes.include?(key) && value == "available"
-        kids_friendly_conditions << key
+        kids_friendly_conditions[key] = Store.send(key.to_s.pluralize)["available"] # ✅ `enum` の `available` の数値を取得
       end
     end
 
-    # ✅ 絞り込み条件がある場合のみ `where` を適用
     unless kids_friendly_conditions.empty?
-      query = kids_friendly_conditions.map { |attr| "#{attr} = ?" }.join(" AND ")
-      values = Array.new(kids_friendly_conditions.size, true)
-      @stores = @stores.where(query, *values)
+      @stores = @stores.where(kids_friendly_conditions)
     end
   end
 
@@ -90,4 +87,5 @@ end
   # 許可されたパラメータのみを通す
   def store_params
   params.require(:store).permit(:store_name, :area, :category, *Store.kids_friendly_attributes)
+  end
 end
