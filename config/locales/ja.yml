@@ -7,17 +7,41 @@ ja:
           osaka: "大阪"
           nagoya: "名古屋"
         categories:
-          Family_restaurant: "ファミレス"
+          Family_restaurant: "ファミリーレストラン"
           Western_food: "洋食"
           Japanese_food: "和食"
           Chinese_food: "中華"
           cafe: "カフェ"
         kids_friendly:
-          private_room: "個室"
-          tatami: "座敷"
-          kids_chair: "キッズチェア"
-          stroller: "ベビーカー入店可"
-          allergy_menu: "アレルギー対応メニュー"
-          kids_space: "キッズスペース"
-          diaper_changing: "おむつ交換台"
-          nursing_room: "授乳室"
+          private_room:
+            available: "あり"
+            not_available: "なし"
+            unknown: "不明"
+          tatami:
+            available: "あり"
+            not_available: "なし"
+            unknown: "不明"
+          kids_chair:
+            available: "あり"
+            not_available: "なし"
+            unknown: "不明"
+          stroller:
+            available: "可能"
+            not_available: "不可"
+            unknown: "不明"
+          allergy_menu:
+            available: "あり"
+            not_available: "なし"
+            unknown: "不明"
+          kids_space:
+            available: "あり"
+            not_available: "なし"
+            unknown: "不明"
+          diaper_changing:
+            available: "あり（施設内）"
+            not_available: "なし"
+            unknown: "不明"
+          nursing_room:
+            available: "あり（施設内）"
+            not_available: "なし"
+            unknown: "不明"
