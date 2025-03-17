@@ -50,44 +50,40 @@ class StoresController < ApplicationController
     end
   end
 
+  # 🔍 検索メソッド
   def search
-  @stores = Store.all
+    @stores = Store.all
 
-  # エリアで絞り込み
-  @stores = @stores.where(area: params[:area]) if params[:area].present?
+    # エリアで絞り込み
+    @stores = @stores.where(area: params[:area]) if params[:area].present?
 
-  # ジャンルで絞り込み
-  @stores = @stores.where(category: params[:category]) if params[:category].present?
+    # ジャンルで絞り込み
+    @stores = @stores.where(category: params[:category]) if params[:category].present?
 
-  # ✅ 子連れ情報のチェックボックスで絞り込み
-  if params[:kids_friendly].present?
-    kids_friendly_conditions = []
+    # ✅ 子連れ向け設備の検索
+    if params[:kids_friendly].present?
+      conditions = {}
 
-    params[:kids_friendly].each do |key, value|
-      if Store.kids_friendly_attributes.include?(key) && value == "available"
-        kids_friendly_conditions << key
+      params[:kids_friendly].each do |key, value|
+        if Store.kids_friendly_attributes.include?(key) && value == "available"
+          enum_value = Store.send(key.to_s.pluralize)[:available] # 🔹 `enum` の数値を取得
+          conditions[key] = enum_value
+        end
       end
+
+      @stores = @stores.where(conditions) unless conditions.empty?
     end
 
-    # ✅ 絞り込み条件がある場合のみ `where` を適用
-    unless kids_friendly_conditions.empty?
-      query = kids_friendly_conditions.map { |attr| "#{attr} = ?" }.join(" AND ")
-      values = Array.new(kids_friendly_conditions.size, true)
-      @stores = @stores.where(query, *values)
-    end
+    render :search_results
   end
-
-  render :search_results
-end
 
   private
 
-  # 共通の設定や制約を適用するためのコールバック
   def set_store
     @store = Store.find(params[:id])
   end
 
-  # 許可されたパラメータのみを通す
   def store_params
-  params.require(:store).permit(:store_name, :area, :category, *Store.kids_friendly_attributes)
+    params.require(:store).permit(:store_name, :area, :category, *Store.kids_friendly_attributes)
+  end
 end
