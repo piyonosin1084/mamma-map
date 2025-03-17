@@ -1,4 +1,4 @@
-<%= form_with(model: [:admin, @store], local: true) do |f| %>
+<%= form_with model: store, url: store.persisted? ? admin_store_path(store) : admin_stores_path, method: store.persisted? ? :patch : :post, local: true, data: { turbo: false } do |f| %>git
   <div class="mb-4">
     <%= f.label :store_name, "店舗名", class: "block font-bold" %>
     <%= f.text_field :store_name, class: "form-input w-full border border-gray-300 rounded-md p-2" %>
