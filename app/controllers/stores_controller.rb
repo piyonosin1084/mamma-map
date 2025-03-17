@@ -51,16 +51,34 @@ class StoresController < ApplicationController
   end
 
   def search
-    @stores = Store.all
+  @stores = Store.all
 
-    # エリアで絞り込み
-    @stores = @stores.where(area: params[:area]) if params[:area].present?
+  # エリアで絞り込み
+  @stores = @stores.where(area: params[:area]) if params[:area].present?
 
-    # ジャンルで絞り込み
-    @stores = @stores.where(category: params[:category]) if params[:category].present?
+  # ジャンルで絞り込み
+  @stores = @stores.where(category: params[:category]) if params[:category].present?
 
-    render :search_results
+  # ✅ 子連れ情報のチェックボックスで絞り込み
+  if params[:kids_friendly].present?
+    kids_friendly_conditions = []
+
+    params[:kids_friendly].each do |key, value|
+      if Store.kids_friendly_attributes.include?(key) && value == "available"
+        kids_friendly_conditions << key
+      end
+    end
+
+    # ✅ 絞り込み条件がある場合のみ `where` を適用
+    unless kids_friendly_conditions.empty?
+      query = kids_friendly_conditions.map { |attr| "#{attr} = ?" }.join(" AND ")
+      values = Array.new(kids_friendly_conditions.size, true)
+      @stores = @stores.where(query, *values)
+    end
   end
+
+  render :search_results
+end
 
   private
 
@@ -71,6 +89,5 @@ class StoresController < ApplicationController
 
   # 許可されたパラメータのみを通す
   def store_params
-    params.require(:store).permit(:store_name, :area, :category)
-  end
+  params.require(:store).permit(:store_name, :area, :category, *Store.kids_friendly_attributes)
 end

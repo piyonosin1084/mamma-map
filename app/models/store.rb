@@ -13,6 +13,15 @@ class Store < ApplicationRecord
 
     #エリアのi18n
     def area_i18n
-        I18n.t("activerecord.attributes.store.areas.#{area}", locale: :ja, default: "未設定")
+    I18n.t("activerecord.attributes.store.areas.#{area}", locale: :ja)
+    end
+
+    #子連れ情報i18n
+    def self.kids_friendly_i18n(attr)
+    I18n.t("activerecord.attributes.store.kids_friendly.#{attr}", locale: :ja)
+    end
+
+    def self.kids_friendly_attributes
+    %w[private_room tatami kids_chair stroller allergy_menu kids_space diaper_changing nursing_room]
     end
 end

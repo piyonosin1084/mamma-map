@@ -10,19 +10,31 @@
     <%= form_with url: search_stores_path, method: :get, local: true, data: { turbo: false } do |f| %>
       <div class="search-options">
         <div>
-          <%= f.label :area, "エリア" %>
-          <%= f.select :area, Store.areas.keys.map { |a| [I18n.t("activerecord.attributes.store.areas.#{a}", default: a), a] }, { include_blank: "すべて" }, class: "form-select" %>
+          <div class="search-options">
+          <div>
+            <%= f.label :area, "エリア" %>
+            <%= f.select :area, Store.areas.keys.map { |a| [Store.new(area: a).area_i18n, a] }, { include_blank: "すべて" }, class: "form-select" %>
+          </div>
+
+          <div>
+            <%= f.label :category, "ジャンル" %>
+            <%= f.select :category, Store.categories.keys.map { |c| [Store.new(category: c).category_i18n, c] }, { include_blank: "すべて" }, class: "form-select" %>
+          </div>
         </div>
 
+        <!-- ✅ 子連れ情報のチェックボックス -->
         <div>
-          <%= f.label :category, "ジャンル" %>
-          <%= f.select :category, Store.categories.keys.map { |c| [Store.new(category: c).category_i18n, c] }, { include_blank: "すべて" }, class: "form-select" %>
+          <p>子連れ対応設備</p>
+          <% Store.kids_friendly_attributes.each do |attr| %>
+            <div>
+              <%= f.check_box "kids_friendly[#{attr}]", {}, "available", nil %>
+              <%= label_tag "kids_friendly_#{attr}", Store.kids_friendly_i18n(attr) %>
+            </div>
+          <% end %>
         </div>
-      </div>
-
-      <%= f.submit "検索", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+              <%= f.submit "検索", class: "btn btn-primary" %>
+            <% end %>
+          </div>
 
   <!-- 店舗リスト -->
   <div class="store-list">
