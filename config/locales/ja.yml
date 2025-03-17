@@ -12,10 +12,6 @@ ja:
           Japanese_food: "和食"
           Chinese_food: "中華"
           cafe: "カフェ"
-        areas:
-          tokyo: "東京"
-          osaka: "大阪"
-          nagoya: "名古屋"
         kids_friendly:
           private_room:
             available: "あり"
