@@ -45,3 +45,12 @@ ja:
             available: "あり（施設内）"
             not_available: "なし"
             unknown: "不明"
+        kids_friendly_labels:
+          private_room: "個室"
+          tatami: "座敷"
+          kids_chair: "キッズチェア"
+          stroller: "ベビーカー入店可"
+          allergy_menu: "アレルギー対応メニュー"
+          kids_space: "キッズスペース"
+          diaper_changing: "おむつ交換台"
+          nursing_room: "授乳室"

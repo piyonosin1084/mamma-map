@@ -60,4 +60,14 @@ class Store < ApplicationRecord
   def nursing_room_i18n
     I18n.t("activerecord.attributes.store.kids_friendly.nursing_room.#{nursing_room}", locale: :ja)
   end
+
+  # ✅ 子連れ向け情報の属性一覧を取得
+  def self.kids_friendly_attributes
+    %w[private_room tatami kids_chair stroller allergy_menu kids_space diaper_changing nursing_room]
+  end
+
+  # ✅ 子連れ向け情報の i18n ラベルを取得
+  def self.kids_friendly_i18n(attr)
+  I18n.t("activerecord.attributes.store.kids_friendly_labels.#{attr}", locale: :ja)
+  end
 end
