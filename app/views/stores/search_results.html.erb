@@ -6,7 +6,14 @@
       <p><strong>店舗名:</strong> <%= store.store_name %></p>
       <p><strong>エリア:</strong> <%= store.area_i18n %></p>
       <p><strong>カテゴリ:</strong> <%= store.category_i18n %></p>
-    </div>
+      <!-- ✅ 子連れ向け設備の表示 -->
+      <p><strong>子連れ向け設備:</strong></p>
+      <ul>
+        <% Store.kids_friendly_attributes.each do |attr| %>
+          <li><%= Store.kids_friendly_i18n(attr) %>: <%= store.send("#{attr}_i18n") || "未設定" %></li>
+        <% end %>
+      </ul> <!-- ✅ 追加: ulを閉じる -->
+    </div> <!-- ✅ 追加: divを閉じる -->
   <% end %>
 <% else %>
   <p>該当する店舗は見つかりませんでした。</p>

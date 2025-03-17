@@ -1,42 +1,38 @@
 <div class="container">
-  <!-- ヘッダー -->
   <header class="header">
     <h1>子連れにやさしいお店がすぐ見つかる！</h1>
   </header>
 
-  <!-- 検索フォーム -->
   <div class="search-box">
     <h2>かんたん検索</h2>
     <%= form_with url: search_stores_path, method: :get, local: true, data: { turbo: false } do |f| %>
       <div class="search-options">
         <div>
-          <div class="search-options">
-          <div>
-            <%= f.label :area, "エリア" %>
-            <%= f.select :area, Store.areas.keys.map { |a| [Store.new(area: a).area_i18n, a] }, { include_blank: "すべて" }, class: "form-select" %>
-          </div>
-
-          <div>
-            <%= f.label :category, "ジャンル" %>
-            <%= f.select :category, Store.categories.keys.map { |c| [Store.new(category: c).category_i18n, c] }, { include_blank: "すべて" }, class: "form-select" %>
-          </div>
+          <%= f.label :area, "エリア" %>
+          <%= f.select :area, Store.areas.keys.map { |a| [Store.new(area: a).area_i18n, a] }, { include_blank: "すべて" }, class: "form-select" %>
         </div>
 
-        <!-- ✅ 子連れ情報のチェックボックス -->
         <div>
-          <p>子連れ対応設備</p>
-          <% Store.kids_friendly_attributes.each do |attr| %>
-            <div>
-              <%= f.check_box "kids_friendly[#{attr}]", {}, "available", nil %>
-              <%= label_tag "kids_friendly_#{attr}", Store.kids_friendly_i18n(attr) %>
-            </div>
-          <% end %>
+          <%= f.label :category, "ジャンル" %>
+          <%= f.select :category, Store.categories.keys.map { |c| [Store.new(category: c).category_i18n, c] }, { include_blank: "すべて" }, class: "form-select" %>
         </div>
-              <%= f.submit "検索", class: "btn btn-primary" %>
-            <% end %>
-          </div>
+      </div>
 
-  <!-- 店舗リスト -->
+      <!-- ✅ 子連れ向け設備のチェックボックス -->
+      <div>
+        <p>子連れ対応設備</p>
+        <% Store.kids_friendly_attributes.each do |attr| %>
+          <div>
+            <%= f.check_box "kids_friendly[#{attr}]", {}, "available", nil %>
+            <%= label_tag "kids_friendly_#{attr}", Store.kids_friendly_i18n(attr) %>
+          </div>
+        <% end %>
+      </div>
+
+      <%= f.submit "検索", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
   <div class="store-list">
     <h3>子どもと一緒のお出かけをもっと楽しく</h3>
     <div class="stores">
