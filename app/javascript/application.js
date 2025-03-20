@@ -3,3 +3,5 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 // toggleDetails.js を読み込む
 import "./toggleDetails";
+import Rails from "@rails/ujs";
+Rails.start();

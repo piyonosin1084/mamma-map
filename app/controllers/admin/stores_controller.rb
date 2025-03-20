@@ -45,7 +45,14 @@ class Admin::StoresController < ApplicationController
     # 成功したらadmin_stores_pathにリダイレクトして、通知 (flash[:notice]) を表示
     def destroy
       @store.destroy
-      redirect_to admin_stores_path, notice: "店舗情報を削除しました。"
+      respond_to do |format|
+        format.html { redirect_to admin_stores_path, notice: "店舗情報を削除しました。", status: :see_other }
+        format.json { head :no_content }
+      end
+    end
+
+    def show
+    redirect_to admin_stores_path
     end
 
     private
