@@ -1,0 +1,40 @@
+ja:
+  errors:
+    messages:
+      not_saved:
+        one:   "エラーが1件発生したため %{resource} は保存されませんでした。"
+        other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+
+  activerecord:
+    models:
+      user:
+        one: "ユーザー"
+        other: "ユーザー"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "を入力してください"
+              taken: "はすでに使用されています"
+            password:
+              too_short: "は%{count}文字以上にしてください"
+              confirmation: "が確認用と一致しません"
+
+  devise:
+    sessions:
+      new:
+        sign_in: "ログイン"
+
+    registrations:
+      new:
+        sign_up: "アカウント登録"
+      edit:
+        edit: "登録情報編集"
+        cancel_my_account: "アカウントを削除する"
+
+    shared:
+      links:
+        sign_up: "アカウント登録"
+        sign_in: "ログイン"
+        forgot_your_password: "パスワードを忘れましたか？"
