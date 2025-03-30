@@ -12,6 +12,11 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+
+    #レビュー投稿機能をstoresにネスト（ログイン済ユーザーのみアクセス）
+    authenticate :user do
+      resources :reviews, only: [ :new, :create ]
+    end
   end
 
   # 管理者用（店舗管理）
@@ -19,10 +24,9 @@ Rails.application.routes.draw do
     resources :stores
   end
 
-  # ユーザー認証が必要な機能（お気に入り・レビューなど）
+  # ユーザー認証が必要な機能（お気に入り）
   authenticate :user do
-    resources :favorites, only: [ :create, :destroy ] # お気に入り機能（ログイン必須）
-    resources :reviews, only: [ :create, :destroy ]   # レビュー機能（ログイン必須）
+    resources :favorites, only: [ :create, :destroy ]
   end
 
   # Rails のヘルスチェック用

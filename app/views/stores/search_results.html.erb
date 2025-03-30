@@ -12,8 +12,13 @@
         <% Store.kids_friendly_attributes.each do |attr| %>
           <li><%= Store.kids_friendly_i18n(attr) %>: <%= store.send("#{attr}_i18n") || "未設定" %></li>
         <% end %>
-      </ul> <!-- ✅ 追加: ulを閉じる -->
-    </div> <!-- ✅ 追加: divを閉じる -->
+      </ul>
+
+      <!--詳細ページへのリンク-->
+      <p class="mt-2">
+        <%= link_to "店舗の詳細を見る", store_path(store), class: "text-blue-600 underline" %>
+      </p>
+    </div>
   <% end %>
 <% else %>
   <p>該当する店舗は見つかりませんでした。</p>
