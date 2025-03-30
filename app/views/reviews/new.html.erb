@@ -1,0 +1,10 @@
+<h2><%= @store.store_name %> へのレビュー投稿</h2>
+
+<%= form_with(model: [@store, @review], local: true) do |form| %>
+  <div class="mb-4">
+    <%= form.label :content, "レビュー内容" %><br>
+    <%= form.text_area :content, rows: 5, class: "w-full border rounded p-2" %>
+  </div>
+
+  <%= form.submit "投稿する", class: "bg-blue-600 text-white px-4 py-2 rounded" %>
+<% end %>

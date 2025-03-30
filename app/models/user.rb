@@ -14,4 +14,7 @@ class User < ApplicationRecord
     login = conditions.delete(:login)
     where(conditions.to_h).where([ "name = :value OR email = :value", { value: login } ]).first
   end
+
+  #レビュー情報を関連付け
+  has_many :reviews, dependent: :destroy
 end

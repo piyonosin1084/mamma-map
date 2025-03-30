@@ -1,10 +1,50 @@
-<p style="color: green"><%= notice %></p>
+<h1 class="text-2xl font-bold mb-4"><%= @store.store_name %></h1>
 
-<%= render @store %>
-
-<div>
-  <%= link_to "Edit this store", edit_store_path(@store) %> |
-  <%= link_to "Back to stores", stores_path %>
-
-  <%= button_to "Destroy this store", @store, method: :delete %>
+<!-- 基本情報 -->
+<div class="mb-4">
+  <p><strong>住所:</strong> <%= @store.address.presence || "未登録" %></p>
+  <p><strong>営業時間:</strong> <%= @store.hours.presence || "未登録" %></p>
 </div>
+
+<!-- 子連れ向け情報 -->
+<div class="mb-6">
+  <h2 class="text-xl font-semibold mb-2">子連れお役立ち情報</h2>
+  <ul class="list-disc ml-6">
+    <% Store.kids_friendly_attributes.each do |attr| %>
+      <li><%= Store.kids_friendly_i18n(attr) %>: <%= @store.send("#{attr}_i18n") || "未設定" %></li>
+    <% end %>
+  </ul>
+</div>
+
+<!-- 写真 -->
+<% if @store.image_url.present? %>
+  <div class="mb-6">
+    <h2 class="text-xl font-semibold mb-2">店舗写真</h2>
+    <img src="<%= @store.image_url %>" alt="店舗写真" class="rounded shadow w-full max-w-lg">
+  </div>
+<% end %>
+
+<h2 class="mt-8">レビュー</h2>
+
+<% if @store.reviews.any? %>
+  <ul class="space-y-3">
+    <% @store.reviews.each do |review| %>
+      <li class="p-3 border rounded bg-gray-100">
+        <strong><%= review.user.name %></strong><br>
+        <%= simple_format(review.content) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>まだレビューはありません。</p>
+<% end %>
+
+<% if user_signed_in? %>
+  <div class="mt-4">
+    <%= link_to "レビューを投稿する", new_store_review_path(@store),
+      class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" %>
+  </div>
+<% else %>
+  <p class="mt-4">レビュー投稿にはログインが必要です。</p>
+  <%= link_to "ログイン", new_user_session_path, class: "underline text-blue-600" %>
+<% end %>

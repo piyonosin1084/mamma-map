@@ -6,11 +6,10 @@
 
 <div id="stores">
   <% @stores.each do |store| %>
-    <%= render store %>
-    <p>
-      <%= link_to "Show this store", store %>
-    </p>
+    <div class="border p-2 mb-2 rounded">
+      <h3 class="text-lg font-bold"><%= store.store_name %></h3>
+      <p><%= store.address %></p>
+      <%= link_to "店舗の詳細を見る", store_path(store), class: "text-blue-600 underline" %>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New store", new_store_path %>

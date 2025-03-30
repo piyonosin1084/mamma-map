@@ -70,4 +70,7 @@ class Store < ApplicationRecord
   def self.kids_friendly_i18n(attr)
   I18n.t("activerecord.attributes.store.kids_friendly_labels.#{attr}", locale: :ja)
   end
+
+  #レビュー情報の関連付け
+  has_many :reviews, dependent: :destroy
 end
